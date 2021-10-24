@@ -1,24 +1,19 @@
-import logo from './logo.svg';
+import imgs from './assets/graphics_big.json';
 import './App.css';
-
+import Navbar from './comps/navbar';
+import Card from './comps/card';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <body>
+      <Navbar />
+      <div>
+      <div class="grid grid-cols-1 gap-2 mx-14 mt-16 2xl:grid-cols-5 xl:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 align-center">
+        {imgs.results.map((item,index)=>{
+            return <Card img={item.urls.small} desc={item.description} alt={item.alt_description} name={item.user.name}/>
+        })}
+      </div>
+      </div>
+    </body>
   );
 }
 
