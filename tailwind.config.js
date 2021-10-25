@@ -5,7 +5,13 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      position: ['focus-within'],
+      twScaleX: ['focus-within'],
+      twScaleY: ['focus-within'],
+      left: ['focus-within'],
+      top: ['focus-within'],
+    },
   },
   plugins: [],
 }
