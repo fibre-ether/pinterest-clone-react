@@ -7,10 +7,8 @@ module.exports = {
   variants: {
     extend: {
       position: ['focus-within'],
-      twScaleX: ['focus-within'],
-      twScaleY: ['focus-within'],
-      left: ['focus-within'],
-      top: ['focus-within'],
+      scale: ['group-hover'],
+      width: ['hover']
     },
   },
   plugins: [],
