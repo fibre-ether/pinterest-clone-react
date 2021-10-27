@@ -4,7 +4,6 @@ import Navbar from './comps/navbar';
 import Card from './comps/card';
 import axios from 'axios'; 
 import Nothing from './comps/nothing';
-import BigImg from './comps/bigImg';
 import {FaCaretUp, FaQuestion} from 'react-icons/fa';
 import Pagination from './comps/pagination';
 function App() {
@@ -19,12 +18,11 @@ function App() {
       user:{name:""}}]
   });
   const [searchTerm, setSearchTerm] = useState("photos");
-  const [pageNum, setPageNum] = useState(2);
-  const [showImg, setShowImg] = useState(false);
-  const [imgStatus, setImgStatus] = useState({src:"", alt:""});
-  const GetItems = async(numPage=2) => {
+  const [pageNum, setPageNum] = useState(1);
+  //const [showImg, setShowImg] = useState(false);
+  //const [imgStatus, setImgStatus] = useState({src:"", alt:""});
+  const GetItems = async(numPage=1) => {
     try {
-        const url = "https://api.unsplash.com/search/photos";
         const query = searchTerm;
         const APP_ID = "-kj6HOsxSX-2-rPZSQA2RZGlhycYC7CsZeOb_kBKKFY";
         console.log("geting useEffect");
@@ -38,8 +36,10 @@ function App() {
     }
   }
 
+  
   useEffect(() => {
     GetItems(pageNum.toString());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[searchTerm, pageNum]);
 
   const onSearchSubmit = (e,searched) => {
@@ -50,19 +50,21 @@ function App() {
 
   const onImgClick = (e,src,alt) => {
     e.preventDefault();
+    /*
     setImgStatus(prevState => ({
       ...prevState,
       src:src,
       alt:alt
     }))
-    setShowImg(true);
+    */
+    //setShowImg(true);
     console.log(src);
   };
-
+/*
   const onImgClose = () => {
     setShowImg(false);
   }
-
+*/
   const onPageChange = (e,direction) => {
     e.preventDefault();
     console.log(direction, pageNum);
