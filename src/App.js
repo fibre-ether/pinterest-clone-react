@@ -19,24 +19,25 @@ function App() {
   });
   const [searchTerm, setSearchTerm] = useState("photos");
   const [pageNum, setPageNum] = useState(1);
+  const [theme, setTheme] = useState("light");
   //const [showImg, setShowImg] = useState(false);
   //const [imgStatus, setImgStatus] = useState({src:"", alt:""});
   const GetItems = async(numPage=1) => {
     try {
         const query = searchTerm;
         const APP_ID = "-kj6HOsxSX-2-rPZSQA2RZGlhycYC7CsZeOb_kBKKFY";
-        console.log("geting useEffect");
+        //console.log("geting useEffect");
         const response = await axios.get(`https://api.unsplash.com/search/photos/?page=${numPage}&per_page=30&query=${query}&client_id=${APP_ID}`);
-        console.log("getting response");
-        console.log(response.data);
+        //console.log("getting response");
+        //console.log(response.data);
         setData(response.data);
     } catch (error){
-        console.log("getting error");
+        //console.log("getting error");
         console.log("error", error);
     }
   }
 
-  
+
   useEffect(() => {
     GetItems(pageNum.toString());
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,7 +46,7 @@ function App() {
   const onSearchSubmit = (e,searched) => {
     e.preventDefault();
     setSearchTerm(searched);
-    console.log(searched);
+    //console.log(searched);
   };
 
   const onImgClick = (e,src,alt) => {
@@ -58,7 +59,7 @@ function App() {
     }))
     */
     //setShowImg(true);
-    console.log(src);
+    //console.log(src);
   };
 /*
   const onImgClose = () => {
@@ -67,12 +68,12 @@ function App() {
 */
   const onPageChange = (e,direction) => {
     e.preventDefault();
-    console.log(direction, pageNum);
+    //console.log(direction, pageNum);
     if (direction==="prev" && pageNum>1) {
-      console.log("prev called");
+      //console.log("prev called");
       setPageNum(i => i-1);
     } else if (direction==="next" && pageNum<data.total_pages) {
-      console.log("next called")
+      //console.log("next called")
       setPageNum(i => i+1);
     }
     onScrollToTop();
@@ -93,21 +94,41 @@ function App() {
   };
 
   const onRequestInfo = () => {
-    console.log("clicked info button");
+    //console.log("clicked info button");
   };
+
+  const onThemeChange = () => {
+    //console.log("Theme changed from"+theme);
+    if (theme === 'dark') { setTheme('light')} else { setTheme('dark') }
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark', 'bg-gray-800')
+    } else {
+      document.documentElement.classList.remove('dark', 'bg-gray-800')
+    }
+  };
+
+  const onLink = () => {
+    window.open("https://github.com/fibre-ether/pinterest-clone-react");
+  }
+
+  useEffect(() => {
+    onThemeChange();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
   return (
     <>
-      <Navbar handleSubmit={onSearchSubmit}/>
-      <button onClick={onScrollToTop} className="fixed right-4 bottom-48 z-10 bg-white shadow-lg border-2 rounded-full h-14 w-14 pb-1 pr-0.5 flex justify-center items-center">
+      <Navbar handleSubmit={onSearchSubmit} handleThemeChange={onThemeChange} theme={theme} handleLink={onLink} className="dark"/>
+      <button onClick={onScrollToTop} className="fixed transform duration-300 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 right-4 bottom-48 z-10 bg-white shadow-lg border-2 rounded-full h-14 w-14 pb-1 pr-0.5 flex justify-center items-center">
       <FaCaretUp size={50} />
       </button>
-      <button onClick={onRequestInfo} className="fixed group right-4 bottom-32 z-10 bg-white shadow-lg border-2 rounded-full h-14 w-14 pb-0.5 pr-0.5 flex justify-center items-center">
+      <button onClick={onRequestInfo} className="fixed transform duration-300 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 group right-4 bottom-32 z-10 bg-white shadow-lg border-2 rounded-full h-14 w-14 pb-0.5 pr-0.5 flex justify-center items-center">
       <FaQuestion size={30} />
-      <div className=" absolute bg-gray-800 text-white font-semibold rounded-md h-auto p-2 w-40 right-16 shadow-lg opacity-100 scale-0 transform duration-100 group-focus:scale-105 transition-all">
+      <div className=" absolute bg-white text-sm sm:text-base dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 font-semibold rounded-md h-auto p-2 w-40 right-16 shadow-lg opacity-100 scale-0 transform duration-100 group-focus:scale-100 transition-all">
         A photo gallery web app made using React.js and Tailwind CSS
       </div>
       </button>
-      <button onClick={onScrollToBottom} className="fixed right-4 bottom-16 z-10 bg-white shadow-lg border-2 rounded-full h-14 w-14 pb-1 pr-0.5 flex justify-center items-center">
+      <button onClick={onScrollToBottom} className="fixed transform duration-300 dark:bg-gray-900 dark:text-gray-300 dark:border-gray-600 right-4 bottom-16 z-10 bg-white shadow-lg border-2 rounded-full h-14 w-14 pb-1 pr-0.5 flex justify-center items-center">
       <FaCaretDown size={50} />
       </button>
       <div>

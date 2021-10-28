@@ -1,6 +1,6 @@
 module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', // or 'media' or 'class'
   theme: {
     namedGroups: ["outer", "inner"],
     extend: {},
@@ -11,7 +11,8 @@ module.exports = {
       position: ['focus-within'],
       scale: ['group-focus'],
       opacity: ['group-focus'],
-      pointerEvents: ['hover', 'focus']
+      pointerEvents: ['hover', 'focus'],
+      justifyContent: ['focus', 'dark']
     },
   },
   plugins: [
