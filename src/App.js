@@ -103,7 +103,7 @@ function App() {
       </button>
       <button onClick={onRequestInfo} className="fixed group right-4 bottom-32 z-10 bg-white shadow-lg border-2 rounded-full h-14 w-14 pb-0.5 pr-0.5 flex justify-center items-center">
       <FaQuestion size={30} />
-      <div className=" absolute bg-gray-800 text-white font-semibold rounded-md h-auto p-2 w-40 right-16 shadow-lg opacity-0 group-focus:opacity-100 transition-all duration-300">
+      <div className=" absolute bg-gray-800 text-white font-semibold rounded-md h-auto p-2 w-40 right-16 shadow-lg opacity-100 scale-0 transform duration-100 group-focus:scale-105 transition-all">
         A photo gallery web app made using React.js and Tailwind CSS
       </div>
       </button>
@@ -113,7 +113,7 @@ function App() {
       <div>
       {data.total===0? <Nothing /> :
       <div className="relative ">
-      <div className="grid grid-cols-2 gap-2 mx-4 place-items-center mt-20 2xl:grid-cols-5 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 align-center">
+      <div className="grid grid-cols-2 gap-0 mx-4 place-items-center mt-20 2xl:grid-cols-5 xl:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 align-center">
         {data.results.map((item,index)=>{
             return <Card img={item.urls.small} desc={item.description} alt={item.alt_description} name={item.user.name} clickHandle={onImgClick} key={index}/>
         })}

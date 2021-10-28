@@ -9,7 +9,7 @@ function Navbar(props) {
 
     return (
         <div className="fixed flex justify-center w-full items-center top-2 z-10 leading-none">
-                <div className="bg-blue-300 spin-logo text-white w-12 h-12 mx-4 shadow-lg rounded-full flex justify-center items-center hover:bg-blue-400 transition-all duration-300">
+                <div className="bg-blue-300 spin-logo rounded-full text-white w-12 h-12 mx-4 shadow-lg  flex justify-center items-center duration-300 hover:bg-blue-400 ">
                     <  FaReact size={40} />
                 </div>
                 <div className="flex justify-center items-center bg-white border-2 border-gray-400 shadow-2xl rounded-full px-4 py-2 divide-gray-300 transform duration-200 bg-opacity-75 hover:scale-x-105 hover:bg-opacity-100 focus-within:bg-opacity-100">
