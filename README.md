@@ -1,2 +1,2 @@
-# A photo gallery web app made using React.js and Tailwind CSS
-This is a photo gallery web app which fetches images from [the unsplash API](https://unsplash.com/) 
+# A photo gallery web app
+This web app is made using **React.js** and **Tailwind CSS** and fetches images from [the unsplash API](https://unsplash.com/) 
