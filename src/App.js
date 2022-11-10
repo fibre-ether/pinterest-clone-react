@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import animalData from './assets/animals.json'
 import './App.css';
 import Navbar from './comps/navbar';
 import Card from './comps/card';
@@ -20,19 +21,18 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("photos");
   const [pageNum, setPageNum] = useState(1);
   const [theme, setTheme] = useState("light");
-  //const [showImg, setShowImg] = useState(false);
-  //const [imgStatus, setImgStatus] = useState({src:"", alt:""});
   const GetItems = async(numPage=1) => {
     try {
         const query = searchTerm;
         const APP_ID = "-kj6HOsxSX-2-rPZSQA2RZGlhycYC7CsZeOb_kBKKFY";
-        //console.log("geting useEffect");
         const response = await axios.get(`https://api.unsplash.com/search/photos/?page=${numPage}&per_page=30&query=${query}&client_id=${APP_ID}`);
-        //console.log("getting response");
-        //console.log(response.data);
-        setData(response.data);
+        console.log(response)
+        if (response.data) {
+          setData(response.data);
+        } else {
+          setData(animalData);
+        }
     } catch (error){
-        //console.log("getting error");
         console.log("error", error);
     }
   }
